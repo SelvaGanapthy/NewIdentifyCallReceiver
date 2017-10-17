@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <SearchView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/l"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/newlead_ac_nameimg" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
+
+                <EditText
+                    android:id="@+id/new_lead_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="180dp"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:hint="username"
+                    android:inputType="text"
+                    android:textColor="#000000"
+                    android:textColorHint="#ffffff"
+                    android:textSize="17dp"
+                    android:textStyle="italic" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/newlead_phoneimg" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
+
+                <EditText
+                    android:id="@+id/new_lead_phoneno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="180dp"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:hint="10 digit mobile no"
+                    android:inputType="number"
+                    android:textColor="#000000"
+                    android:textColorHint="#ffffff"
+                    android:textSize="17dp"
+                    android:textStyle="italic" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/newlead_mailimg" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
+
+                <EditText
+                    android:id="@+id/new_lead_Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="180dp"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:hint="valid e-mail-id"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#000000"
+                    android:textColorHint="#ffffff"
+                    android:textSize="17dp"
+                    android:textStyle="italic" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/newlead_projectimg" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
+
+                <EditText
+                    android:id="@+id/new_lead_Projects"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="180dp"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:hint="Projects"
+                    android:inputType="text"
+                    android:textColor="#000000"
+                    android:textColorHint="#ffffff"
+                    android:textSize="17dp"
+                    android:textStyle="italic" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="HOW WAS IT"
+            android:textColor="#303F9F"
+            android:textSize="20dp"
+            android:textStyle="normal" />
+
+
+        <LinearLayout
+            android:id="@+id/newLead_emoji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:id="@+id/emojisad"
+                android:src="@drawable/emoji_sad" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:id="@+id/emojihappy"
+                android:src="@drawable/emoji_happy" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:id="@+id/emojiveryhappy"
+                android:src="@drawable/emoji_veryhappy" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/newLead_feedbackReg_buttonNxt"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="#3F51B5"
+        android:padding="5dp"
+        android:src="@drawable/newlead_buttonnext" />
+</RelativeLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Incoming Caller Info !"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/newlead_cancel_img"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:background="@color/colorAccent"
+            android:src="@drawable/alertdialog_cancelimg" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="#FFF"
+        android:paddingBottom="16dp">
+
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/newcaller_calling_defaultimg"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/caller_defaultimg"
+            />
+
+        <TextView
+            android:id="@+id/newcaller_calling_phno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="+913235852455554"
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/newcaller_calling_phno"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="NEW LEAD"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/testscreen2"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.example.admin.newidentifycallreceiver.NewLead_RegForm">
+    <include
+        android:id="@+id/include1"
+        layout="@layout/newlead_regform"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+    </include>
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/newlead_conversation_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+    </include>
+
+    <include
+        android:id="@+id/include3"
+        layout="@layout/newlead_nxtfollow_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+    </include>
+
+
+</RelativeLayout>
