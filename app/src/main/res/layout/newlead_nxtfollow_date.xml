@@ -22,14 +22,15 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <DatePicker
-            android:id="@+id/datePicker"
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="56dp"
+            android:layout_marginTop="150dp"
+            android:id="@+id/date"
+            android:text="date"
             android:gravity="center" />
+
     </LinearLayout>
     ,
 </RelativeLayout>
