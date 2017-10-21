@@ -9,16 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="  New Lead"
-    android:textSize="20sp"
-    android:textColor="#ffffff"/>
-        <SearchView
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end" />
+            android:fontFamily="serif"
+            android:text="   New Lead"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -192,28 +190,29 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/emojisad"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:id="@+id/emojisad"
                 android:src="@drawable/emoji_sad" />
 
             <ImageView
+                android:id="@+id/emojihappy"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:id="@+id/emojihappy"
                 android:src="@drawable/emoji_happy" />
 
             <ImageView
+                android:id="@+id/emojiveryhappy"
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:id="@+id/emojiveryhappy"
                 android:src="@drawable/emoji_veryhappy" />
 
         </LinearLayout>
     </LinearLayout>
+
     <ImageView
         android:id="@+id/newLead_feedbackReg_buttonNxt"
         android:layout_width="match_parent"

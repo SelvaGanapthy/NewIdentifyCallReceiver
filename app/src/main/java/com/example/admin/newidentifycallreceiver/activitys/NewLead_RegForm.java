@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 
 public class NewLead_RegForm extends AppCompatActivity implements View.OnClickListener {
     private Calendar cal;
-    private int day, month, year;
+    private int day, month, year , backpress=0 ;
     static final int DATE_PICKER_ID = 1111;
     Thread updateSeekbar;
     SeekBar seekBar;
@@ -249,5 +249,13 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
                 return datePickerDialog;
         }
         return null;
+    }
+    public void onBackPressed(){
+        backpress = (backpress + 1);
+        Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
+
+        if (backpress>1) {
+            this.finish();
+        }
     }
 }
