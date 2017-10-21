@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context="com.example.admin.newidentifycallreceiver.NewLead_RegForm">
+    tools:context="com.example.admin.newidentifycallreceiver.activitys.NewLead_RegForm">
 
     <include
         android:id="@+id/include1"

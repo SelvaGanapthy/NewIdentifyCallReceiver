@@ -1,4 +1,4 @@
-package com.example.admin.newidentifycallreceiver;
+package com.example.admin.newidentifycallreceiver.activitys;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -8,6 +8,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.example.admin.newidentifycallreceiver.R;
 
 public class MainActivity extends AppCompatActivity {
     public static final int requestcode_permisson = 1;

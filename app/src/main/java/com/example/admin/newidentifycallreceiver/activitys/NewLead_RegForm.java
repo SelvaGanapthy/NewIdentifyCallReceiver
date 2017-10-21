@@ -1,4 +1,4 @@
-package com.example.admin.newidentifycallreceiver;
+package com.example.admin.newidentifycallreceiver.activitys;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -16,6 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.admin.newidentifycallreceiver.R;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -48,42 +50,14 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_lead__reg_form);
         initialize();
-        mp = new MediaPlayer();
         Intent intent = getIntent();
         adpath = intent.getStringExtra("audiopath");
-        newLead_feedbackReg_buttonNxt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                newLead_Validate();
-            }
-        });
-        newLead_conversDetail_bNxt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                include1.setVisibility(View.GONE);
-                include2.setVisibility(View.GONE);
-                include3.setVisibility(View.VISIBLE);
-                include4.setVisibility(View.GONE);
-                cal = Calendar.getInstance();
-                day = cal.get(Calendar.DAY_OF_MONTH);
-                month = cal.get(Calendar.MONTH);
-                year = cal.get(Calendar.YEAR);
-                showDialog(DATE_PICKER_ID);
-
-
-            }
-        });
-
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-            }
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {}
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -110,7 +84,7 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initialize() {
-        voice_found = (RelativeLayout) findViewById(R.id.audio_record_play);
+
         tv_no_voice_found = (TextView) findViewById(R.id.no_voice_found);
         new_lead_Name = (EditText) findViewById(R.id.new_lead_Name);
         new_lead_phoneno = (EditText) findViewById(R.id.new_lead_phoneno);
@@ -126,6 +100,7 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
         include2 = (RelativeLayout) findViewById(R.id.include2);
         include3 = (RelativeLayout) findViewById(R.id.include3);
         include4 = (RelativeLayout) findViewById(R.id.include4);
+        voice_found = (RelativeLayout) findViewById(R.id.audio_record_play);
         playnpause_bt = (ImageButton) findViewById(R.id.playnpause_bt);
         volumeonnoff_bt = (ImageButton) findViewById(R.id.volumeonnoff_bt);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
@@ -135,6 +110,10 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
         emoji_sad.setOnClickListener(this);
         playnpause_bt.setOnClickListener(this);
         volumeonnoff_bt.setOnClickListener(this);
+        newLead_conversDetail_bNxt.setOnClickListener(this);
+        newLead_feedbackReg_buttonNxt.setOnClickListener(this);
+        mp = new MediaPlayer();
+
     }
 
     private void newLead_Validate() {
@@ -167,7 +146,7 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
             if (adpath.equals("null")) {
                 tv_no_voice_found.setVisibility(View.VISIBLE);
                 voice_found.setVisibility(View.GONE);
-                Snackbar.make(findViewById(android.R.id.content), "No Voice Record Found", Snackbar.LENGTH_SHORT).show();
+                //Snackbar.make(findViewById(android.R.id.content), "No Voice Record Found", Snackbar.LENGTH_SHORT).show();
             } else {
                 try {
 
@@ -181,12 +160,8 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
                 seekBar.setMax(mp.getDuration());
                 updateSeekbar.start();
 
-
             }
-
         }
-
-
     }
 
     @Override
@@ -228,6 +203,20 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
 
                 }
                 break;
+            case R.id.newLead_conversDetail_bNxt:
+                include1.setVisibility(View.GONE);
+                include2.setVisibility(View.GONE);
+                include3.setVisibility(View.VISIBLE);
+                include4.setVisibility(View.GONE);
+                cal = Calendar.getInstance();
+                day = cal.get(Calendar.DAY_OF_MONTH);
+                month = cal.get(Calendar.MONTH);
+                year = cal.get(Calendar.YEAR);
+                showDialog(DATE_PICKER_ID);
+                break;
+            case R.id.newLead_feedbackReg_buttonNxt:
+                newLead_Validate();
+                break;
         }
 
     }
@@ -237,12 +226,11 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
         // DatePickerDialog
         public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
             date.setText(selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear);
-            Toast.makeText(getApplicationContext(), "get", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(), "get", Toast.LENGTH_SHORT).show();
             include1.setVisibility(View.GONE);
             include2.setVisibility(View.GONE);
             include3.setVisibility(View.GONE);
             include4.setVisibility(View.VISIBLE);
-
         }
 
     };
@@ -252,13 +240,12 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
         switch (id) {
             case DATE_PICKER_ID:
                 // create a new DatePickerDialog with values you want to show
-
                 DatePickerDialog datePickerDialog = new DatePickerDialog(this, datePickerListener, year, month, day);
                 Calendar calendar = Calendar.getInstance();
-
                 calendar.add(Calendar.DATE, 0); // Add 0 days to Calendar
                 Date newDate = calendar.getTime();
                 datePickerDialog.getDatePicker().setMinDate(newDate.getTime() - (newDate.getTime() % (24 * 60 * 60 * 1000)));
+                datePickerDialog.setTitle("\t\tNEXT FOLLOW UP DETAILS");
                 return datePickerDialog;
         }
         return null;

@@ -1,4 +1,4 @@
-package com.example.admin.newidentifycallreceiver;
+package com.example.admin.newidentifycallreceiver.broadcastReceivers;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,6 +13,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.admin.newidentifycallreceiver.R;
+import com.example.admin.newidentifycallreceiver.activitys.NewLead_RegForm;
+
 import java.util.Date;
 import java.util.Random;
 
@@ -22,7 +25,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Admin on 10/17/2017.
  */
 
-public class CallReceiver  extends PhoneCallReceiver  {
+public class CallReceiver  extends PhoneCallReceiver {
     static MediaRecorder mr;
     Context context;
     Random random;
@@ -32,8 +35,8 @@ public class CallReceiver  extends PhoneCallReceiver  {
 
     static AlertDialog a, b, c, d;
     int[] img_id = {R.drawable.gokuls, R.drawable.emoji_happy, R.drawable.newlead_ac_nameimg};
-    String[] names = {"Gokul", "Balaji", "Karthick"};
-    String[] no = {"+91701091596", "+919790935340", "+919629578743"};
+    String[] names = {"Gokul", "Iffan", "Karthick"};
+    String[] no = {"+91701091596", "+91824808323", "+919629578743"};
 
 
     @Override
@@ -44,8 +47,7 @@ public class CallReceiver  extends PhoneCallReceiver  {
         a = alert.create();
         b = alert.create();
         audiopaths = "null";
-        Toast.makeText(context, "Calling no is " + number, Toast.LENGTH_SHORT).show();
-        for (int i = 0; i < no.length; i++) {
+        for (int i = 0; i < no.length; i++)
             if (no[i].equals(number)) {
                 View view = LayoutInflater.from(ctx.getApplicationContext()).inflate(R.layout.availablelead_calling_alertdialog, null);
                 TextView caller_name = (TextView) view.findViewById(R.id.availablecaller_calling_name);
@@ -67,7 +69,7 @@ public class CallReceiver  extends PhoneCallReceiver  {
                 a.show();
                 flag = true;
             }
-        }
+
 
         if (flag == false) {
             View view = LayoutInflater.from(ctx.getApplicationContext()).inflate(R.layout.newlead_calling_alertdialog, null);
@@ -127,8 +129,8 @@ public class CallReceiver  extends PhoneCallReceiver  {
             voice_recording = "false";
             mr.stop();
             // Toast.makeText(ctx.getApplicationContext(), "stop", Toast.LENGTH_SHORT).show();
-
         }
+
         if (flag == false) {
             View view = LayoutInflater.from(ctx.getApplicationContext()).inflate(R.layout.newlead_called_alertdislog, null);
             Button newlead_called_but = (Button) view.findViewById(R.id.newlead_called_but);
@@ -164,7 +166,7 @@ public class CallReceiver  extends PhoneCallReceiver  {
     protected void onIncomingCallAnswered(Context ctx, String number, Date start, Date end) {
         b.cancel();
         a.cancel();
-        Toast.makeText(ctx, "Answered", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(ctx, "Answered", Toast.LENGTH_SHORT).show();
         mr = new MediaRecorder();
         random = new Random();
         audiopaths = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + CreateRandomAudioFileName(5) + "AudioRecording.3gp";
@@ -173,14 +175,13 @@ public class CallReceiver  extends PhoneCallReceiver  {
             mr.prepare();
             mr.start();
             voice_recording = "true";
-            Toast.makeText(ctx, "Voice Recording stated", Toast.LENGTH_SHORT).show();
+       //     Toast.makeText(ctx, "Voice Recording stated", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void MediaRecorderReady() {
-
         mr.setAudioSource(MediaRecorder.AudioSource.MIC);
         mr.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         mr.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
