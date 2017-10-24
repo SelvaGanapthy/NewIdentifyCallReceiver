@@ -13,6 +13,7 @@ import com.example.admin.newidentifycallreceiver.R;
 
 public class MainActivity extends AppCompatActivity {
     public static final int requestcode_permisson = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean checkPermisson() {
         int result = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
-        return (result == PackageManager.PERMISSION_GRANTED) && (result1 == PackageManager.PERMISSION_GRANTED);
+        int result2 = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE);
+        int result3 = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.PROCESS_OUTGOING_CALLS);
+        return (result == PackageManager.PERMISSION_GRANTED) && (result1 == PackageManager.PERMISSION_GRANTED) && (result2 == PackageManager.PERMISSION_GRANTED) && (result3 == PackageManager.PERMISSION_GRANTED);
 
     }
 
     public void requestPermission() {
-        ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.RECORD_AUDIO}, requestcode_permisson);
+        ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_PHONE_STATE, Manifest.permission.PROCESS_OUTGOING_CALLS}, requestcode_permisson);
 
     }
 
@@ -43,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults.length > 0) {
                     boolean StoragePermisson = grantResults[0] == PackageManager.PERMISSION_DENIED;
                     boolean RecordPermisson = grantResults[1] == PackageManager.PERMISSION_DENIED;
-                    if (StoragePermisson && RecordPermisson) {
+                    boolean outgoingcallPermisson = grantResults[0] == PackageManager.PERMISSION_DENIED;
+                    boolean readphonestatePermisson = grantResults[0] == PackageManager.PERMISSION_DENIED;
+                    if (StoragePermisson && RecordPermisson && outgoingcallPermisson && readphonestatePermisson) {
                         Toast.makeText(getApplicationContext(), "Permission denied sure u accept it", Toast.LENGTH_SHORT).show();
                         requestPermission();
                     } else

@@ -11,7 +11,7 @@ import java.util.Date;
  * Created by Admin on 10/17/2017.
  */
 
-public class PhoneCallReceiver extends BroadcastReceiver {
+public abstract class PhoneCallReceiver extends BroadcastReceiver {
     private static int lastState = TelephonyManager.CALL_STATE_IDLE;
     private static Date callStartTime;
     private static boolean isIncoming;

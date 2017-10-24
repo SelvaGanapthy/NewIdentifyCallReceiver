@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaRecorder;
 import android.os.Environment;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -25,7 +26,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Admin on 10/17/2017.
  */
 
-public class CallReceiver  extends PhoneCallReceiver {
+public class CallReceiver extends PhoneCallReceiver {
     static MediaRecorder mr;
     Context context;
     Random random;
@@ -36,14 +37,14 @@ public class CallReceiver  extends PhoneCallReceiver {
     static AlertDialog a, b, c, d;
     int[] img_id = {R.drawable.gokuls, R.drawable.emoji_happy, R.drawable.newlead_ac_nameimg};
     String[] names = {"Gokul", "Iffan", "Karthick"};
-    String[] no = {"+91701091596", "+91824808323", "+919629578743"};
+    String[] no = {"+919790935340", "+91988400490", "+91962957874"};
 
 
     @Override
     protected void onIncomingCallStarted(final Context ctx, final String number, Date start) {
         boolean flag = false;
         context = ctx;
-        AlertDialog.Builder alert = new AlertDialog.Builder(ctx.getApplicationContext());
+        final AlertDialog.Builder alert = new AlertDialog.Builder(ctx);
         a = alert.create();
         b = alert.create();
         audiopaths = "null";
@@ -65,7 +66,7 @@ public class CallReceiver  extends PhoneCallReceiver {
                 caller_name.setText(" " + names[i]);
                 caller_phno.setText(" " + no[i]);
                 a.setView(view);
-                a.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+                a.getWindow().setType(WindowManager.LayoutParams.TYPE_TOAST);
                 a.show();
                 flag = true;
             }
@@ -83,8 +84,9 @@ public class CallReceiver  extends PhoneCallReceiver {
             });
             caller_phno.setText(" " + number);
             b.setView(view);
-            b.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+            b.getWindow().setType(WindowManager.LayoutParams.TYPE_TOAST);
             b.show();
+            Toast.makeText(ctx, "incoming", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -120,7 +122,7 @@ public class CallReceiver  extends PhoneCallReceiver {
                 iv_dp.setImageResource(img_id[i]);
                 availablelead_called_name.setText("" + names[i]);
                 d.setView(view);
-                d.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+                d.getWindow().setType(WindowManager.LayoutParams.TYPE_TOAST);
                 d.show();
                 flag = true;
             }
@@ -155,7 +157,7 @@ public class CallReceiver  extends PhoneCallReceiver {
                 }
             });
             c.setView(view);
-            c.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+            c.getWindow().setType(WindowManager.LayoutParams.TYPE_TOAST);
             c.show();
 
         }
@@ -175,7 +177,7 @@ public class CallReceiver  extends PhoneCallReceiver {
             mr.prepare();
             mr.start();
             voice_recording = "true";
-       //     Toast.makeText(ctx, "Voice Recording stated", Toast.LENGTH_SHORT).show();
+            //     Toast.makeText(ctx, "Voice Recording stated", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
         }

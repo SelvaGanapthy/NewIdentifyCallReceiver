@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 
 public class NewLead_RegForm extends AppCompatActivity implements View.OnClickListener {
     private Calendar cal;
-    private int day, month, year , backpress=0 ;
+    private int day, month, year, backpress = 0;
     static final int DATE_PICKER_ID = 1111;
     Thread updateSeekbar;
     SeekBar seekBar;
@@ -54,10 +54,12 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
         adpath = intent.getStringExtra("audiopath");
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {}
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -143,6 +145,7 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
             include2.setVisibility(View.VISIBLE);
             include3.setVisibility(View.GONE);
             include4.setVisibility(View.GONE);
+            backpress += 1;
             if (adpath.equals("null")) {
                 tv_no_voice_found.setVisibility(View.VISIBLE);
                 voice_found.setVisibility(View.GONE);
@@ -208,6 +211,7 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
                 include2.setVisibility(View.GONE);
                 include3.setVisibility(View.VISIBLE);
                 include4.setVisibility(View.GONE);
+                backpress += 1;
                 cal = Calendar.getInstance();
                 day = cal.get(Calendar.DAY_OF_MONTH);
                 month = cal.get(Calendar.MONTH);
@@ -226,11 +230,12 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
         // DatePickerDialog
         public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
             date.setText(selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear);
-           // Toast.makeText(getApplicationContext(), "get", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getApplicationContext(), "get", Toast.LENGTH_SHORT).show();
             include1.setVisibility(View.GONE);
             include2.setVisibility(View.GONE);
             include3.setVisibility(View.GONE);
             include4.setVisibility(View.VISIBLE);
+            backpress += 1;
         }
 
     };
@@ -250,12 +255,31 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
         }
         return null;
     }
-    public void onBackPressed(){
-        backpress = (backpress + 1);
-        Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
 
-        if (backpress>1) {
+    public void onBackPressed() {
+        if (backpress <= 0)
             this.finish();
+        else {
+            if (backpress == 3) {
+                include1.setVisibility(View.GONE);
+                include2.setVisibility(View.GONE);
+                include3.setVisibility(View.VISIBLE);
+                include4.setVisibility(View.GONE);
+                showDialog(DATE_PICKER_ID);
+            }
+            if (backpress == 2) {
+                include1.setVisibility(View.GONE);
+                include2.setVisibility(View.VISIBLE);
+                include3.setVisibility(View.GONE);
+                include4.setVisibility(View.GONE);
+            }
+            if (backpress == 1) {
+                include1.setVisibility(View.VISIBLE);
+                include2.setVisibility(View.GONE);
+                include3.setVisibility(View.GONE);
+                include4.setVisibility(View.GONE);
+            }
+            backpress -= 1;
         }
     }
 }
