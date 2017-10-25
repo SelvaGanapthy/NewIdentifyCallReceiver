@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/newlead_conversationdetail_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,24 +12,14 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar2"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary">
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:background="@color/colorPrimary"
-                android:src="@drawable/arrow_onback_pressedimg"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Lead"
-                android:fontFamily="serif"
-                android:textSize="20sp"
-                android:layout_marginLeft="18dp"
-                android:textColor="#ffffff"/>
+            android:background="?attr/colorPrimary"
+            app:title="New Lead"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
+            app:titleTextColor="#ffffff">
+
 
         </android.support.v7.widget.Toolbar>
 
@@ -48,8 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:visibility="visible"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <ImageButton
                 android:id="@+id/playnpause_bt"
@@ -87,15 +78,22 @@
                 android:textSize="17dp" />
         </RelativeLayout>
 
-
-        <EditText
-            android:id="@+id/conversDetails_editText"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:hint="Conversation in detail"
-            android:padding="20dp"
-            android:textAlignment="center" />
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp">
+
+            <EditText
+                android:id="@+id/conversDetails_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Conversation in detail"
+                android:textAlignment="center" />
+        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
     <ImageView
@@ -113,11 +111,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="120dp"
         android:text="No Voice Record Found"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
-        android:layout_centerVertical="true"
         android:visibility="gone" />
 
 </RelativeLayout>

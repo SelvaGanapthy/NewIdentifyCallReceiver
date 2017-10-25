@@ -10,8 +10,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -48,18 +51,15 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
     static String adpath;
     static boolean volume = true;
     ImageButton playnpause_bt, volumeonnoff_bt;
-  //  Toolbar toolbar;
-
+    Toolbar toolbar1, toolbar2, toolbar3, toolbar4;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_lead__reg_form);
-
         initialize();
-   //     setSupportActionBar(toolbar);
-     //   toolbar.inflateMenu();
+        init_ToolHome_bt();
         Intent intent = getIntent();
         adpath = intent.getStringExtra("audiopath");
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -95,6 +95,19 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
 
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home:
+                onBackPressed();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+
     private void initialize() {
 
         tv_no_voice_found = (TextView) findViewById(R.id.no_voice_found);
@@ -125,8 +138,26 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
         newLead_conversDetail_bNxt.setOnClickListener(this);
         newLead_feedbackReg_buttonNxt.setOnClickListener(this);
         mp = new MediaPlayer();
-      //  toolbar=(Toolbar)findViewById(R.id.toolbar);
 
+    }
+
+    private void init_ToolHome_bt() {
+        toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
+        toolbar2 = (Toolbar) findViewById(R.id.toolbar2);
+        toolbar3 = (Toolbar) findViewById(R.id.toolbar3);
+        toolbar4 = (Toolbar) findViewById(R.id.toolbar4);
+        setSupportActionBar(toolbar1);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        setSupportActionBar(toolbar2);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        setSupportActionBar(toolbar3);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        setSupportActionBar(toolbar4);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     private void newLead_Validate() {
@@ -236,7 +267,7 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    private DatePickerDialog.OnDateSetListener  pickerListener= new DatePickerDialog.OnDateSetListener() {
+    private DatePickerDialog.OnDateSetListener pickerListener = new DatePickerDialog.OnDateSetListener() {
         // the callback received when the user "sets" the Date in the
 
         // DatePickerDialog
@@ -254,7 +285,7 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
     protected Dialog onCreateDialog(int id) {
         switch (id) {
             case DATE_PICKER_ID:
-                DatePickerDialog dialog = new DatePickerDialog(this, pickerListener, year, month,day);
+                DatePickerDialog dialog = new DatePickerDialog(this, pickerListener, year, month, day);
                 Calendar calendar = Calendar.getInstance();
                 calendar.add(Calendar.DATE, 0); // Add 0 days to Calendar
                 Date newDate = calendar.getTime();
@@ -289,18 +320,21 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
                 include3.setVisibility(View.VISIBLE);
                 include4.setVisibility(View.GONE);
                 showDialog(DATE_PICKER_ID);
+
             }
             if (backpress == 2) {
                 include1.setVisibility(View.GONE);
                 include2.setVisibility(View.VISIBLE);
                 include3.setVisibility(View.GONE);
                 include4.setVisibility(View.GONE);
+
             }
             if (backpress == 1) {
                 include1.setVisibility(View.VISIBLE);
                 include2.setVisibility(View.GONE);
                 include3.setVisibility(View.GONE);
                 include4.setVisibility(View.GONE);
+
             }
             backpress -= 1;
         }

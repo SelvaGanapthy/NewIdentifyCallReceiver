@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,35 +11,27 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar3"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary">
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:background="@color/colorPrimary"
-                android:src="@drawable/arrow_onback_pressedimg"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Lead"
-                android:textSize="20sp"
-                android:layout_marginLeft="18dp"
-                android:fontFamily="serif"
-                android:textColor="#ffffff"/>
+            android:background="?attr/colorPrimary"
+            app:title="New Lead"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
+            app:titleTextColor="#ffffff">
+
+
+
 
         </android.support.v7.widget.Toolbar>
 
         <EditText
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="150dp"
-            android:id="@+id/date"
-            android:text="date"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="date" />
 
     </LinearLayout>
     ,
