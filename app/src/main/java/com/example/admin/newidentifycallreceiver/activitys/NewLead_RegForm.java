@@ -2,11 +2,15 @@ package com.example.admin.newidentifycallreceiver.activitys;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -44,12 +48,18 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
     static String adpath;
     static boolean volume = true;
     ImageButton playnpause_bt, volumeonnoff_bt;
+  //  Toolbar toolbar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_lead__reg_form);
+
         initialize();
+   //     setSupportActionBar(toolbar);
+     //   toolbar.inflateMenu();
         Intent intent = getIntent();
         adpath = intent.getStringExtra("audiopath");
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -115,6 +125,7 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
         newLead_conversDetail_bNxt.setOnClickListener(this);
         newLead_feedbackReg_buttonNxt.setOnClickListener(this);
         mp = new MediaPlayer();
+      //  toolbar=(Toolbar)findViewById(R.id.toolbar);
 
     }
 
@@ -225,8 +236,9 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+    private DatePickerDialog.OnDateSetListener  pickerListener= new DatePickerDialog.OnDateSetListener() {
         // the callback received when the user "sets" the Date in the
+
         // DatePickerDialog
         public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
             date.setText(selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear);
@@ -237,21 +249,32 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
             include4.setVisibility(View.VISIBLE);
             backpress += 1;
         }
-
     };
 
-    @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
             case DATE_PICKER_ID:
-                // create a new DatePickerDialog with values you want to show
-                DatePickerDialog datePickerDialog = new DatePickerDialog(this, datePickerListener, year, month, day);
+                DatePickerDialog dialog = new DatePickerDialog(this, pickerListener, year, month,day);
                 Calendar calendar = Calendar.getInstance();
                 calendar.add(Calendar.DATE, 0); // Add 0 days to Calendar
                 Date newDate = calendar.getTime();
-                datePickerDialog.getDatePicker().setMinDate(newDate.getTime() - (newDate.getTime() % (24 * 60 * 60 * 1000)));
-                datePickerDialog.setTitle("\t\tNEXT FOLLOW UP DETAILS");
-                return datePickerDialog;
+                dialog.getDatePicker().setMinDate(newDate.getTime() - (newDate.getTime() % (24 * 60 * 60 * 1000)));
+                dialog.setTitle("\t\tNEXT FOLLOW UP-DETAILS \n");
+                dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface
+                        .OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == DialogInterface.BUTTON_NEGATIVE) {
+                            dialog.dismiss();
+                            include1.setVisibility(View.GONE);
+                            include2.setVisibility(View.VISIBLE);
+                            include3.setVisibility(View.GONE);
+                            include4.setVisibility(View.GONE);
+                            backpress -= 1;
+                        }
+                    }
+                });
+                dialog.setCancelable(false);
+                return dialog;
         }
         return null;
     }
@@ -282,4 +305,6 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
             backpress -= 1;
         }
     }
+
+
 }
