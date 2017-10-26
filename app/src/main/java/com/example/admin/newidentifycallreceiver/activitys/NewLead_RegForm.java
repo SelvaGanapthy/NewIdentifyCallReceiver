@@ -96,18 +96,6 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.home:
-                onBackPressed();
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
-
-
     private void initialize() {
 
         tv_no_voice_found = (TextView) findViewById(R.id.no_voice_found);
@@ -158,6 +146,7 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
         setSupportActionBar(toolbar4);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
     }
 
     private void newLead_Validate() {
@@ -338,6 +327,19 @@ public class NewLead_RegForm extends AppCompatActivity implements View.OnClickLi
             }
             backpress -= 1;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                //handle the home button onClick event here.
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(menuItem);
     }
 
 
