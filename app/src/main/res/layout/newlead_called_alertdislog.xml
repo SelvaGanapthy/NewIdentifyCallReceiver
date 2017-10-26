@@ -69,7 +69,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:paddingBottom="15dp"
-                android:text="NEW "
+                android:text="NEW LEAD "
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />  </LinearLayout>
 
@@ -87,7 +87,7 @@
                 android:layout_height="55dp"
                 android:layout_weight="1"
                 android:id="@+id/newlead_called_but"
-                android:background="#72c29b"
+                android:background="@drawable/ripple_effect"
                 android:paddingRight="1dp"
                 android:text="NEW LEAD"
 
